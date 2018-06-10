@@ -5,6 +5,7 @@ import java.nio.ByteBuffer;
 
 import com.easydiameter.dictionary.avp.AVPDictionaryData;
 import com.easydiameter.packet.avp.OctetStringAVP;
+import com.easydiameter.util.BufferUtilities;
 
 public class UTF8StringAVP extends OctetStringAVP {
 
@@ -19,6 +20,7 @@ public class UTF8StringAVP extends OctetStringAVP {
 	@Override
 	public void encodeData(ByteBuffer buffer) {
 		buffer.put(byteData);
+		buffer.position(buffer.position() + BufferUtilities.calculatePadding(this.avpLength));
 	}
 	
 	@Override

@@ -6,16 +6,16 @@ import java.util.StringTokenizer;
 public class BufferUtilities {
 
 	public static void set3BytesToBuffer(ByteBuffer buffer, long data) {
-		buffer.put((byte) (data & 0xFF));
-		buffer.put((byte) ((data & 0xFF00) >>> 8));
 		buffer.put((byte) ((data & 0xFF0000) >>> 16));
+		buffer.put((byte) ((data & 0xFF00) >>> 8));
+		buffer.put((byte) (data & 0xFF));
 	}
 
 	public static void set4BytesToBuffer(ByteBuffer buffer, long data) {
-		buffer.put((byte) (data & 0xFF));
-		buffer.put((byte) ((data & 0xFF00) >>> 8));
-		buffer.put((byte) ((data & 0xFF0000) >>> 16));
 		buffer.put((byte) ((data & 0xFF000000) >>> 24));
+		buffer.put((byte) ((data & 0xFF0000) >>> 16));
+		buffer.put((byte) ((data & 0xFF00) >>> 8));
+		buffer.put((byte) (data & 0xFF));
 	}
 
 	public static int get3BytesFromBuffer(ByteBuffer buffer) {

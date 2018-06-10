@@ -233,6 +233,9 @@ public class DiameterMessage implements ProtocolDefinitions {
 	public void addAVPIntoList(DiameterAVP avp) {
 		this.avpList.add(avp);
 		this.header.addLengthToMessage(avp.getAvpLength());
+		if(avp instanceof OctetStringAVP || avp instanceof UTF8StringAVP || avp instanceof DiameterIdentityAVP) {
+			this.header.addLengthToMessage(BufferUtilities.calculatePadding(avp.getAvpLength()));
+		}
 	}
 
 	public void addAVP(DiameterAVP avp) {

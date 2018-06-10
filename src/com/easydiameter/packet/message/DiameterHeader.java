@@ -48,6 +48,7 @@ public class DiameterHeader implements ProtocolDefinitions {
 	}
 
 	public DiameterHeader(long commandCode, long applicationId) {
+		this.version = DIAMETER_VERSION;
 		this.messageLength = DIAMETER_MSG_HDR_LEN;
 		this.commandCode = commandCode;
 		this.applicationId = applicationId;

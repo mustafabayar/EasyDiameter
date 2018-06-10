@@ -2,7 +2,9 @@ import com.easydiameter.util.ProtocolDefinitions;
 import com.easydiameter.exception.DiameterDictionaryException;
 import com.easydiameter.exception.DiameterParseException;
 import com.easydiameter.packet.avp.DiameterAVP;
+import com.easydiameter.packet.avp.GroupedAVP;
 import com.easydiameter.packet.avp.Integer32AVP;
+import com.easydiameter.packet.avp.Unsigned32AVP;
 import com.easydiameter.packet.avp.derived.EnumeratedAVP;
 import com.easydiameter.packet.avp.factory.AVPFactory;
 import com.easydiameter.packet.avp.factory.EnumeratedAVPFactory;
@@ -43,6 +45,8 @@ public class DiameterTest implements ProtocolDefinitions {
 		
 		// Method 1 - Use created message to add your AVP
 		
+		msg1.addOctetStringAVP(AC_ORIGIN_REALM, AVP_FLAG_M, VENDOR_ID_NONE, "My_Realm_1111");
+		
 		msg1.addAVPFromDictionary(AC_SESSION_ID, VENDOR_ID_NONE, "My Session Id");
 		
 		msg1.addInteger32AVP(AC_PORT, AVP_FLAG_M, VENDOR_ID_NONE, 3868);
@@ -68,6 +72,22 @@ public class DiameterTest implements ProtocolDefinitions {
 		EnumeratedAVP disconnectCause = new EnumeratedAVP(AC_DISCONNECT_CAUSE, AVP_FLAG_M, VENDOR_ID_NONE);
 		disconnectCause.setData(DC_BUSY);
 		msg1.addAVP(disconnectCause);
+		
+		// Grouped AVP - Example of Group AVP with depth of 3 inner AVP
+		GroupedAVP multipleServicesCreditControl = new GroupedAVP(AC_MULTIPLE_SERVICES_CREDIT_CONTROL, AVP_FLAG_M, VENDOR_ID_NONE);
+		
+		GroupedAVP grantedServiceUnit = new GroupedAVP(AC_GRANTED_SERVICE_UNIT, AVP_FLAG_M, VENDOR_ID_NONE);
+			
+		Unsigned32AVP ccTime = new Unsigned32AVP(AC_CC_TIME, AVP_FLAG_M, VENDOR_ID_NONE);
+		ccTime.setData(10);
+		
+		grantedServiceUnit.addAVP(ccTime);
+		
+		multipleServicesCreditControl.addAVP(grantedServiceUnit);
+		
+		msg1.addAVP(multipleServicesCreditControl);
+		
+		///////////////////////////////////////////////////////////////////////////////////////////
 
 		// Method 2 - Create AVP first, and add it to the message
 		
@@ -94,6 +114,10 @@ public class DiameterTest implements ProtocolDefinitions {
 		System.out.println(sb1.toString());
 		
 		byte[] packet = msg1.encodePacket(); // Ready to send
+		
+		StringBuilder sb2 = new StringBuilder();
+		BufferUtilities.printMessageBuffer(sb2, packet, 0, msg1.getMessageLength());
+		System.out.println(sb2.toString());
 	
 		// Now assume we received a message, how to parse it ?
 		
@@ -102,9 +126,9 @@ public class DiameterTest implements ProtocolDefinitions {
 		
 		DiameterMessage message = DiameterMessage.decodePacket(rawData);
 		
-		StringBuilder sb2 = new StringBuilder();
-		message.printContent(sb2);
-		System.out.println(sb2.toString());
+		StringBuilder sb3 = new StringBuilder();
+		message.printContent(sb3);
+		System.out.println(sb3.toString());
 		
 
 	}
