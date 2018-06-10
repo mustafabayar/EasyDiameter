@@ -3,7 +3,9 @@ import com.easydiameter.exception.DiameterDictionaryException;
 import com.easydiameter.exception.DiameterParseException;
 import com.easydiameter.packet.avp.DiameterAVP;
 import com.easydiameter.packet.avp.Integer32AVP;
+import com.easydiameter.packet.avp.derived.EnumeratedAVP;
 import com.easydiameter.packet.avp.factory.AVPFactory;
+import com.easydiameter.packet.avp.factory.EnumeratedAVPFactory;
 import com.easydiameter.packet.message.DiameterHeader;
 import com.easydiameter.packet.message.DiameterMessage;
 import com.easydiameter.packet.message.factory.DiameterMessageFactory;
@@ -52,6 +54,20 @@ public class DiameterTest implements ProtocolDefinitions {
 		msg1.addOctetStringAVP(AC_CC_SUB_SESSION_ID, AVP_FLAG_NONE, VENDOR_ID_NONE, raw);
 
 		msg1.addUTF8StringAVP(AC_BORDER_ROUTER_NAME, AVP_FLAG_NONE, VENDOR_ID_NONE, "Router X");
+		
+		// For the Enumerated AVP values, look into ProtocolDefinitions.java, 
+		// I have tried to add values for common Enumerated AVPs. You can also simply give the integer value of the AVP.
+		// In the below example I have added Auth-Request-Type AVP with the value of 3(Authorize_Authenticate).
+		// I have tried to name Enumerated AVP values with initials of the AVP, for example for the Disconnect-Cause AVP,
+		// It's corresponding values are;
+		//		DC_REBOOTING										= 0;					/* [RFC6733] */
+		//		DC_BUSY												= 1;					/* [RFC6733] */
+		//		DC_DO_NOT_WANT_TO_TALK_TO_YOU						= 2;					/* [RFC6733] */
+		msg1.addEnumeratedAVP(AC_AUTH_REQUEST_TYPE, AVP_FLAG_M, VENDOR_ID_NONE, ART_AUTHORIZE_AUTHENTICATE);
+		//or
+		EnumeratedAVP disconnectCause = new EnumeratedAVP(AC_DISCONNECT_CAUSE, AVP_FLAG_M, VENDOR_ID_NONE);
+		disconnectCause.setData(DC_BUSY);
+		msg1.addAVP(disconnectCause);
 
 		// Method 2 - Create AVP first, and add it to the message
 		
