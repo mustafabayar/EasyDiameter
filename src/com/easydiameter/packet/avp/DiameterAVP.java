@@ -53,6 +53,7 @@ public abstract class DiameterAVP implements ProtocolDefinitions {
 			BufferUtilities.set4BytesToBuffer(buffer, vendorId);
 		}
 		encodeData(buffer);
+		buffer.position(buffer.position() + BufferUtilities.calculatePadding(avpLength));
 	}
 
 	public abstract void encodeData(ByteBuffer buffer);

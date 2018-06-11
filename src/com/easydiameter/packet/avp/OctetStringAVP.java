@@ -21,7 +21,6 @@ public class OctetStringAVP extends DiameterAVP {
 	@Override
 	public void encodeData(ByteBuffer buffer) {
 		buffer.put(byteData);
-		buffer.position(buffer.position() + BufferUtilities.calculatePadding(this.avpLength));
 	}
 	
 	@Override
