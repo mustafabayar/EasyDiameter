@@ -173,7 +173,8 @@ public class DiameterMessage implements ProtocolDefinitions {
 		long vendorId;
 		int dataLength;
 
-		while (buffer.hasRemaining()) {
+		while (buffer.position() < message.getMessageLength()) {
+//		while (buffer.hasRemaining()) {
 			avpCode = BufferUtilities.get4BytesAsUnsigned32(buffer);
 
 			flags = buffer.get();
