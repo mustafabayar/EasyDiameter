@@ -6,22 +6,22 @@ import com.easydiameter.packet.avp.derived.IPFilterRuleAVP;
 
 public class IPFilterRuleAVPFactory extends AVPFactory {
 
-	private static final IPFilterRuleAVPFactory INSTANCE = new IPFilterRuleAVPFactory();
+   private static final IPFilterRuleAVPFactory INSTANCE = new IPFilterRuleAVPFactory();
 
-	private IPFilterRuleAVPFactory() {
-	}
+   private IPFilterRuleAVPFactory() {
+   }
 
-	public static AVPFactory getInstance() {
-		return INSTANCE;
-	}
+   public static AVPFactory getInstance() {
+      return INSTANCE;
+   }
 
-	@Override
-	public DiameterAVP createAVP(long avpCode, byte flags, long vendorId) {
-		return new IPFilterRuleAVP(avpCode, flags, vendorId);
-	}
+   @Override
+   public DiameterAVP createAVP(long avpCode, byte flags, long vendorId) {
+      return new IPFilterRuleAVP(avpCode, flags, vendorId);
+   }
 
-	@Override
-	public DiameterAVP createAVP(AVPDictionaryData dictData) {
-		return new IPFilterRuleAVP(dictData);
-	}
+   @Override
+   public DiameterAVP createAVP(AVPDictionaryData dictData) {
+      return new IPFilterRuleAVP(dictData);
+   }
 }

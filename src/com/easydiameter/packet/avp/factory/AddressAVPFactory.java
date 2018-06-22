@@ -6,22 +6,22 @@ import com.easydiameter.packet.avp.derived.AddressAVP;
 
 public class AddressAVPFactory extends AVPFactory {
 
-	private static final AddressAVPFactory INSTANCE = new AddressAVPFactory();
+   private static final AddressAVPFactory INSTANCE = new AddressAVPFactory();
 
-	private AddressAVPFactory() {
-	}
+   private AddressAVPFactory() {
+   }
 
-	public static AVPFactory getInstance() {
-		return INSTANCE;
-	}
+   public static AVPFactory getInstance() {
+      return INSTANCE;
+   }
 
-	@Override
-	public DiameterAVP createAVP(long avpCode, byte flags, long vendorId) {
-		return new AddressAVP(avpCode, flags, vendorId);
-	}
+   @Override
+   public DiameterAVP createAVP(long avpCode, byte flags, long vendorId) {
+      return new AddressAVP(avpCode, flags, vendorId);
+   }
 
-	@Override
-	public DiameterAVP createAVP(AVPDictionaryData dictData) {
-		return new AddressAVP(dictData);
-	}
+   @Override
+   public DiameterAVP createAVP(AVPDictionaryData dictData) {
+      return new AddressAVP(dictData);
+   }
 }

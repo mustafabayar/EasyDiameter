@@ -6,44 +6,44 @@ import com.easydiameter.dictionary.avp.AVPDictionaryData;
 
 public class Unsigned64AVP extends DiameterAVP {
 
-	private long data;
+   private long data;
 
-	public Unsigned64AVP(long avpCode, byte flags, long vendorId) {
-		super(avpCode, flags, vendorId);
-	}
+   public Unsigned64AVP(long avpCode, byte flags, long vendorId) {
+      super(avpCode, flags, vendorId);
+   }
 
-	public Unsigned64AVP(AVPDictionaryData dictData) {
-		super(dictData);
-	}
+   public Unsigned64AVP(AVPDictionaryData dictData) {
+      super(dictData);
+   }
 
-	@Override
-	public void encodeData(ByteBuffer buffer) {
-		buffer.putLong(data);
-	}
+   @Override
+   public void encodeData(ByteBuffer buffer) {
+      buffer.putLong(data);
+   }
 
-	@Override
-	public void decodeData(ByteBuffer buffer, int length) {
-		data = buffer.getLong();
-		addDataLength(length);
-	}
+   @Override
+   public void decodeData(ByteBuffer buffer, int length) {
+      data = buffer.getLong();
+      addDataLength(length);
+   }
 
-	public long getData() {
-		return data;
-	}
+   public long getData() {
+      return data;
+   }
 
-	public void setData(long data) {
-		this.data = data;
-		addDataLength(8);
-	}
+   public void setData(long data) {
+      this.data = data;
+      addDataLength(8);
+   }
 
-	@Override
-	public void setData(String data) {
-		this.data = Long.parseLong(data);
-		addDataLength(8);
-	}
+   @Override
+   public void setData(String data) {
+      this.data = Long.parseLong(data);
+      addDataLength(8);
+   }
 
-	@Override
-	public void printData(StringBuilder sb) {
-		sb.append(data);
-	}
+   @Override
+   public void printData(StringBuilder sb) {
+      sb.append(data);
+   }
 }

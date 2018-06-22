@@ -33,13 +33,7 @@ public class Acceptor implements Runnable {
       this.stack = diameterStack;
    }
 
-   /**
-    * Binds the socket and returns actual local port
-    * 
-    * @return
-    * @throws IOException
-    * @throws Exception
-    */
+   /* Binds the socket and returns actual local port */
    public int bind() throws IOException {
       InetAddress inetaddr = InetAddress.getByName(this.ipAddrStr);
 

@@ -5,12 +5,12 @@ import com.easydiameter.packet.avp.Integer32AVP;
 
 public class EnumeratedAVP extends Integer32AVP {
 
-	public EnumeratedAVP(long avpCode, byte flags, long vendorId) {
-		super(avpCode, flags, vendorId);
-	}
-	
-	public EnumeratedAVP(AVPDictionaryData dictData) {
-		super(dictData);
-	}
+   public EnumeratedAVP(long avpCode, byte flags, long vendorId) {
+      super(avpCode, flags, vendorId);
+   }
+
+   public EnumeratedAVP(AVPDictionaryData dictData) {
+      super(dictData);
+   }
 
 }

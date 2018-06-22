@@ -6,22 +6,22 @@ import com.easydiameter.packet.avp.derived.EnumeratedAVP;
 
 public class EnumeratedAVPFactory extends AVPFactory {
 
-	private static final EnumeratedAVPFactory INSTANCE = new EnumeratedAVPFactory();
+   private static final EnumeratedAVPFactory INSTANCE = new EnumeratedAVPFactory();
 
-	private EnumeratedAVPFactory() {
-	}
+   private EnumeratedAVPFactory() {
+   }
 
-	public static AVPFactory getInstance() {
-		return INSTANCE;
-	}
+   public static AVPFactory getInstance() {
+      return INSTANCE;
+   }
 
-	@Override
-	public DiameterAVP createAVP(long avpCode, byte flags, long vendorId) {
-		return new EnumeratedAVP(avpCode, flags, vendorId);
-	}
+   @Override
+   public DiameterAVP createAVP(long avpCode, byte flags, long vendorId) {
+      return new EnumeratedAVP(avpCode, flags, vendorId);
+   }
 
-	@Override
-	public DiameterAVP createAVP(AVPDictionaryData dictData) {
-		return new EnumeratedAVP(dictData);
-	}
+   @Override
+   public DiameterAVP createAVP(AVPDictionaryData dictData) {
+      return new EnumeratedAVP(dictData);
+   }
 }

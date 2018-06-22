@@ -84,9 +84,7 @@ public class DiameterStack {
       new Thread(this.acceptor, "Acceptor").start();
    }
 
-   /**
-    * Accepts remote-address and port Return 0 if success Return 0 if success
-    */
+   /* Accepts remote-address and port Return 0 if success Return 0 if success */
    public int startWithAttempt(String remoteAddress, int remotePort, String localAddress, int localPort) {
       int result = RC_SUCCESS;
       long start = 0;
@@ -137,7 +135,7 @@ public class DiameterStack {
    }
 
    /*
-    * called from application to send message through the established
+    * Called from application to send message through the established
     * connection/socket established connection/socket
     */
    public int sendMessage(byte[] msg, int len) {
@@ -169,6 +167,7 @@ public class DiameterStack {
    /*
     * Callbacks from Acceptor and Receiver
     */
+
    /* called from Acceptor in the case of a connection accepted */
    public void connectionAccepted(Socket sock) {
       this.connectionSocket = sock;

@@ -5,23 +5,23 @@ import com.easydiameter.packet.avp.DiameterAVP;
 import com.easydiameter.packet.avp.GenericAVP;
 
 public class GenericAVPFactory extends AVPFactory {
-	
-	private static final GenericAVPFactory INSTANCE = new GenericAVPFactory();
 
-	private GenericAVPFactory() {
-	}
+   private static final GenericAVPFactory INSTANCE = new GenericAVPFactory();
 
-	public static AVPFactory getInstance() {
-		return INSTANCE;
-	}
+   private GenericAVPFactory() {
+   }
 
-	@Override
-	public DiameterAVP createAVP(long avpCode, byte flags, long vendorId) {
-		return new GenericAVP(avpCode, flags, vendorId);
-	}
+   public static AVPFactory getInstance() {
+      return INSTANCE;
+   }
 
-	@Override
-	public DiameterAVP createAVP(AVPDictionaryData dictData) {
-		return new GenericAVP(dictData);
-	}
+   @Override
+   public DiameterAVP createAVP(long avpCode, byte flags, long vendorId) {
+      return new GenericAVP(avpCode, flags, vendorId);
+   }
+
+   @Override
+   public DiameterAVP createAVP(AVPDictionaryData dictData) {
+      return new GenericAVP(dictData);
+   }
 }
