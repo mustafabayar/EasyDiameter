@@ -4,6 +4,7 @@
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/mustafabayar/EasyDiameter/blob/master/LICENSE)
 
 With EasyDiameter, it is easy to build and parse Diameter Protocol messages. With over 1600 AVP(Attribute Value Pair) in the dictionary and good naming conventions for protocol constants, EasyDiameter makes it easy to create Diameter applications without knowing much about the protocol itself and lets the developer to focus on behavior of their application. Now, EasyDiameter also supports simple Client and Server structure. All you need to do is to provide your own server or client behavior, and EasyDiameter will deal with the connection and transaction.
+> Implementation of RFC3588 / RFC6733
 
 ## Usage
 Check the Test folder to see examples about how to use this library. Currently there is no documentation support.
