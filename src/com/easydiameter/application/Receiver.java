@@ -1,16 +1,17 @@
 package com.easydiameter.application;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.Socket;
 import java.net.SocketException;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-import org.apache.log4j.Logger;
-
 public class Receiver implements Runnable {
 
-   private static Logger LOGGER      = Logger.getLogger(Receiver.class);
+   private static Logger LOGGER      = LoggerFactory.getLogger(Receiver.class);
 
    static final int      buffer_size = 4096;
 

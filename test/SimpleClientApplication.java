@@ -1,14 +1,14 @@
-import org.apache.log4j.Logger;
-
 import com.easydiameter.application.DiameterApplication;
 import com.easydiameter.application.DiameterStack;
 import com.easydiameter.packet.message.DiameterMessage;
 import com.easydiameter.util.ProtocolDefinitions;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 // This is a very basic example of DiameterApplication, implement it as you need
 public class SimpleClientApplication implements DiameterApplication, ProtocolDefinitions {
 
-   private static Logger LOGGER = Logger.getLogger(SimpleClientApplication.class);
+   private static Logger LOGGER = LoggerFactory.getLogger(SimpleClientApplication.class);
 
    @Override
    public void receiveMessage(DiameterStack stack, DiameterMessage message) {

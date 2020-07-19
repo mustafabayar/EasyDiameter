@@ -1,7 +1,3 @@
-import java.io.IOException;
-
-import org.apache.log4j.Logger;
-
 import com.easydiameter.application.DiameterApplication;
 import com.easydiameter.application.client.EasyDiameterClient;
 import com.easydiameter.application.server.EasyDiameterServer;
@@ -10,12 +6,16 @@ import com.easydiameter.packet.message.DiameterMessage;
 import com.easydiameter.packet.message.factory.DiameterMessageFactory;
 import com.easydiameter.util.BufferUtilities;
 import com.easydiameter.util.ProtocolDefinitions;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.io.IOException;
 
 public class ServerClientTest implements ProtocolDefinitions {
 
    public static void main(String[] args) throws DiameterDictionaryException, IOException, InterruptedException {
 
-      final Logger LOGGER = Logger.getLogger(ServerClientTest.class);
+      final Logger LOGGER = LoggerFactory.getLogger(ServerClientTest.class);
 
       DiameterApplication serverApplication = new SimpleServerApplication();
       EasyDiameterServer diameterServer = new EasyDiameterServer(serverApplication, "127.0.0.1", 3868); // Local Address to bind

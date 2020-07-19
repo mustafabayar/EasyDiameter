@@ -1,21 +1,16 @@
 package com.easydiameter.application;
 
-import java.io.IOException;
-import java.io.OutputStream;
-import java.net.InetAddress;
-import java.net.InetSocketAddress;
-import java.net.Socket;
-import java.net.SocketAddress;
-import java.net.SocketTimeoutException;
-import java.net.UnknownHostException;
-
-import org.apache.log4j.Logger;
-
 import com.easydiameter.exception.DiameterParseException;
 import com.easydiameter.packet.message.DiameterMessage;
 import com.easydiameter.util.BufferUtilities;
 import com.easydiameter.util.ProtocolDefinitions;
 import com.easydiameter.util.ProtocolUtilities;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.io.IOException;
+import java.io.OutputStream;
+import java.net.*;
 
 public class DiameterStack {
 
@@ -30,7 +25,7 @@ public class DiameterStack {
    public static final int       WM_SERVER          = 1;
    public static final int       WM_CLIENT          = 2;
 
-   private static Logger         LOGGER             = Logger.getLogger(DiameterStack.class);
+   private static Logger         LOGGER             = LoggerFactory.getLogger(DiameterStack.class);
 
    protected int                 connectTimeout     = 2000;
    protected int                 workingMode        = WM_NONE;

@@ -1,16 +1,17 @@
 package com.easydiameter.application;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-import org.apache.log4j.Logger;
-
 public class Acceptor implements Runnable {
 
-   private static Logger LOGGER      = Logger.getLogger(Acceptor.class);
+   private static Logger LOGGER      = LoggerFactory.getLogger(Acceptor.class);
 
    DiameterStack         stack;
 

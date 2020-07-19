@@ -1,15 +1,15 @@
 package com.easydiameter.application.server;
 
-import java.io.IOException;
-
-import org.apache.log4j.Logger;
-
 import com.easydiameter.application.DiameterApplication;
 import com.easydiameter.application.DiameterStack;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.io.IOException;
 
 public class EasyDiameterServer {
 
-   private static Logger LOGGER = Logger.getLogger(EasyDiameterServer.class);
+   private static Logger LOGGER = LoggerFactory.getLogger(EasyDiameterServer.class);
 
    DiameterApplication   application;
    DiameterStack         stack;

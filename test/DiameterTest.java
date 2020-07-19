@@ -1,5 +1,3 @@
-import org.apache.log4j.Logger;
-
 import com.easydiameter.exception.DiameterDictionaryException;
 import com.easydiameter.exception.DiameterParseException;
 import com.easydiameter.packet.avp.DiameterAVP;
@@ -13,12 +11,14 @@ import com.easydiameter.packet.message.DiameterMessage;
 import com.easydiameter.packet.message.factory.DiameterMessageFactory;
 import com.easydiameter.util.BufferUtilities;
 import com.easydiameter.util.ProtocolDefinitions;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class DiameterTest implements ProtocolDefinitions {
 
    public static void main(String[] args) throws DiameterParseException, DiameterDictionaryException {
 
-      final Logger LOGGER = Logger.getLogger(DiameterTest.class);
+      final Logger LOGGER = LoggerFactory.getLogger(DiameterTest.class);
 
       ////////////////////////////////////
       /* How to create Diameter Message */
